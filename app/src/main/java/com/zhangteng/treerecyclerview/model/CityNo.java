@@ -3,7 +3,7 @@ package com.zhangteng.treerecyclerview.model;
 import com.zhangteng.treerecyclerview.tree.TreeNodeChildren;
 import com.zhangteng.treerecyclerview.tree.TreeNodeId;
 import com.zhangteng.treerecyclerview.tree.TreeNodeLabel;
-import com.zhangteng.treerecyclerview.tree.TreeNodePid;
+import com.zhangteng.treerecyclerview.tree.TreeNodeParent;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ public class CityNo implements Serializable {
     private String code;
     @TreeNodeLabel
     private String region;
-    @TreeNodePid
+    @TreeNodeParent
     private String parent;
     @TreeNodeChildren
     private List<CityNo> regionEntitys;

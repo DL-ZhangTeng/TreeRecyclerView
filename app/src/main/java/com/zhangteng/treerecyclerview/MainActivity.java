@@ -61,15 +61,6 @@ public class MainActivity extends AppCompatActivity {
         Type listType = new TypeToken<List<CityNo>>() {
         }.getType();
         List<CityNo> list = new Gson().fromJson(json, listType);
-        forTreeList(list);
-    }
-
-    private void forTreeList(List<CityNo> list) {
         mData.addAll(list);
-        for (CityNo cityNo : list) {
-            if (cityNo.getRegionEntitys() != null) {
-                forTreeList(cityNo.getRegionEntitys());
-            }
-        }
     }
 }

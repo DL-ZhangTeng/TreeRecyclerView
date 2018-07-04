@@ -5,13 +5,11 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by swing on 2018/6/29.
+ */
 public class Node {
     private int id;
-    /**
-     * 根节点pId为0
-     */
-    private int pId = 0;
-
     private String name;
 
     /**
@@ -39,17 +37,15 @@ public class Node {
     public Node() {
     }
 
-    public Node(int id, int pId, String name) {
+    public Node(int id, String name) {
         super();
         this.id = id;
-        this.pId = pId;
         this.name = name;
     }
 
-    public Node(@NonNull String id, @NonNull String pId, String name) {
+    public Node(@NonNull String id, String name) {
         super();
         this.id = Integer.parseInt(id);
-        this.pId = Integer.parseInt(pId);
         this.name = name;
     }
 
@@ -69,14 +65,6 @@ public class Node {
         this.id = id;
     }
 
-    public int getpId() {
-        return pId;
-    }
-
-    public void setpId(int pId) {
-        this.pId = pId;
-    }
-
     public String getName() {
         return name;
     }
@@ -85,22 +73,12 @@ public class Node {
         this.name = name;
     }
 
-    public boolean isExpand() {
-        return isExpand;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    /**
-     * 设置展开
-     *
-     * @param isExpand
-     */
-    public void setExpand(boolean isExpand) {
-        this.isExpand = isExpand;
-        if (!isExpand) {
-            for (Node node : children) {
-                node.setExpand(isExpand);
-            }
-        }
+    public boolean isExpand() {
+        return isExpand;
     }
 
     public List<Node> getChildren() {
@@ -155,7 +133,17 @@ public class Node {
         return parent == null ? 0 : parent.getLevel() + 1;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    /**
+     * 设置展开
+     *
+     * @param isExpand
+     */
+    public void setExpand(boolean isExpand) {
+        this.isExpand = isExpand;
+        if (!isExpand) {
+            for (Node node : children) {
+                node.setExpand(isExpand);
+            }
+        }
     }
 }
